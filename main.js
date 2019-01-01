@@ -5,9 +5,9 @@ var { buildSchema } = require('graphql');
 // Construct a schema, using GraphQL schema language
 var schema = buildSchema(`
   type Query {
-    me: Me
+    profile: Profile
   }
-  type Me {
+  type Profile {
     name: String
     birthday: String
     country: String
@@ -16,7 +16,7 @@ var schema = buildSchema(`
   }
 `);
 
-class Me {
+class Profile {
     constructor(name, birthday, country, email, job) {
         this.name = name;
         this.birthday = birthday;
@@ -28,8 +28,8 @@ class Me {
 
 // The root provides a resolver function for each API endpoint
 var root = {
-    me: () => {
-        return new Me(
+    profile: () => {
+        return new Profile(
             "chihiro",
             "1996/03/28",
             "Kanagawa, Japan",
